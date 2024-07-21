@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-const URI = 'mongodb+srv://digvijayrajebhosale4349:XJTDCrvAiL7QYJqh@gofoodcluster1.sks6ioq.mongodb.net/GoFoodDB?retryWrites=true&w=majority';
+dotenv.config();
+
+const URI = process.env.DATABASE_URL;
 
 const connectToDatabase = async () => {
     try {
