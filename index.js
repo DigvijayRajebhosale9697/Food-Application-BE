@@ -6,6 +6,9 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 const FrontEndURL = process.env.FRONTENDURL;
+
+console.log('Frontend URL:', FrontEndURL);  // Add this line to log the FrontEndURL
+
 import connectToDatabase from './db.js';
 import createUserRouter from './Routes/CreateUser.js';
 import displayDataRouter from './Routes/DisplayData.js';
