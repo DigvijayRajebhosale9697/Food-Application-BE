@@ -1,23 +1,23 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
-const FrontEndURL = process.env.FRONTENDURL
+const FrontEndURL = process.env.FRONTENDURL;
 import connectToDatabase from './db.js';
 import createUserRouter from './Routes/CreateUser.js';
 import displayDataRouter from './Routes/DisplayData.js';
 import orderDataRouter from './Routes/OrderData.js';
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', FrontEndURL);
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
+// Use CORS middleware
+app.use(cors({
+  origin: FrontEndURL,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204
+}));
 
 connectToDatabase();
 
